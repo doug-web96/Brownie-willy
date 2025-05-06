@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brownie do Willy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; color: #333; background: #e6dcd9; }
+    header { background: #e6dcd9; text-align: center; padding: 50px 20px; }
+    header h1 { font-size: 2.5em; color: #d12a2a; }
+    header p { font-size: 1.2em; margin: 20px 0; }
+    a { text-decoration: none; color: inherit; }
+    .cta-buttons a { display: inline-block; margin: 10px; padding: 15px 25px; background: #d12a2a; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; }section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+section h2 { color: #d12a2a; margin-bottom: 20px; text-align: center; }
+.sabores { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.card { width: 100%; max-width: 220px; border: 1px solid #ccc; border-radius: 10px; overflow: hidden; text-align: center; background: #fdfdfd; }
+.card img { width: 100%; height: auto; }
+.card h3 { margin: 10px 0; color: #d12a2a; }
+.card p { padding: 0 10px 15px; font-size: 0.9em; }
+
+.carousel-container {
+  overflow: hidden;
+  max-width: 400px;
+  width: 200px;
+  margin: auto;
+  position: relative;
+}
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel .card {
+  flex: 0 0 100%;
+}
+.carousel-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+.carousel-buttons button {
+  background: #d12a2a;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer { background: #f4f4f4; padding: 30px 20px; text-align: center; font-size: 0.9em; color: #555; }
+footer a { color: #d12a2a; text-decoration: none; margin: 0 5px; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 2em; }
+  .card { max-width: 100%; }
+}
+
+  </style>
+</head>
+<body>  <header>
+    <img src="images/header.png" alt="Brownie do Willy" style="max-width: 80vw; max-height: 80vh">
+    <h1>O Brownie Mais Irresistível de Maringá</h1>
+    <p>Sabor artesanal, textura perfeita e recheios que derretem na boca.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/5544988353858" target="_blank">FAZER PEDIDO AGORA</a>
+      <a href="#sabores">CONHEÇA OS SABORES</a>
+    </div>
+  </header>  <section>
+    <h2>O Brownie do Willy</h2>
+    <p style="text-align: center; max-width: 700px; margin: auto;">
+      Mais de milhares de brownies vendidos em Maringá! Produzido artesanalmente com ingredientes selecionados, cada unidade carrega a paixão de quem realmente entende de sabor. Receita exclusiva, massa densa e úmida, com recheios de outro mundo.
+    </p>
+  </section>  <section id="sabores">
+    <h2>Sabores Incríveis</h2>
+    <div class="sabores">
+      <div class="card">
+        <img src="images/doce de leite.jpeg" alt="Brownie de Doce de Leite">
+        <h3>Doce de Leite</h3>
+        <p>Recheado com doce de leite cremoso que derrete na boca.</p>
+      </div>
+      <div class="card">
+        <img src="images/Nutella.jpeg" alt="Brownie de Nutella">
+        <h3>Nutella</h3>
+        <p>A combinação mais amada do Brasil, feita à perfeição.</p>
+      </div>
+      <div class="card">
+        <img src="images/original.jpeg" alt="Brownie Tradicional">
+        <h3>Tradicional</h3>
+        <p>Clássico, intenso e irresistível. Para os amantes de chocolate puro.</p>
+      </div>
+    </div>
+  </section>  <section>
+    <h2>O Que Nossos Clientes Dizem</h2>
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <div class="card">
+          <p>"Simplesmente o melhor brownie que já comi!"</p>
+        </div>
+        <div class="card">
+          <p>"Comprei uma vez e agora não vivo sem."</p>
+        </div>
+        <div class="card">
+          <p>"Entrega rápida e sabor surreal!"</p>
+        </div>
+      </div>
+      <div class="carousel-buttons">
+        <button onclick="moveCarousel(-1)">Anterior</button>
+        <button onclick="moveCarousel(1)">Próximo</button>
+      </div>
+    </div>
+  </section>  <section>
+    <h2>Faça Seu Pedido Agora</h2>
+    <p style="text-align: center;">WhatsApp: <a href="https://wa.me/5544988353858">(44) 98835-3858</a> <br>
+    Email: <a href="mailto:atendimentowilly@outlook.com">atendimentowilly@outlook.com</a> <br>
+    Instagram: <a href="https://instagram.com/browniewilly" target="_blank">@browniewilly</a>
+    </p>
+  </section>  <footer>
+    <p>&copy; 2025 Brownie do Willy. Todos os direitos reservados.</p>
+  </footer>  <script>
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel');
+    const totalItems = carousel.children.length;
+
+    function moveCarousel(direction) {
+      currentIndex = (currentIndex + direction + totalItems) % totalItems;
+      const offset = -currentIndex * 100;
+      carousel.style.transform = `translateX(${offset}%)`;
+    }
+  </script></body>
+</html>
